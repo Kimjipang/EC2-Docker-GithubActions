@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Main Screen - To Do List App</title>
+</head>
+<body>
+<h1>Add Your To Do List</h1>
+<form action="/addTodo" method="post">
+    <div>
+        <label for="title">Title:</label>
+        <input type="text" id="title" name="title" required>
+    </div>
+    <div>
+        <label for="content">Content:</label>
+        <textarea id="content" name="content" required></textarea>
+    </div>
+    <div>
+        <button type="submit">Add To Do</button>
+    </div>
+</form>
+</body>
+</html>
