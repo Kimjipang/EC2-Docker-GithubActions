@@ -1,4 +1,4 @@
-name: Deploy to AWS EC2 with Decoded SSH Key
+name: Deploy to AWS EC2
 
 on:
   push:
@@ -8,21 +8,16 @@ on:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+    - name: Checkout code
+      uses: actions/checkout@v2
 
-      - name: Decode SSH Key and Prepare SSH Connection
-        run: |
-          mkdir -p $HOME/.ssh
-          echo -e "-----BEGIN RSA PRIVATE KEY-----\n$(echo "${{ secrets.SSH_KEY_BASE64 }}" | base64 -d)\n-----END RSA PRIVATE KEY-----" > $HOME/.ssh/id_rsa
-          chmod 600 $HOME/.ssh/id_rsa
-
-      - name: Deploy to EC2
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.EC2_HOST }}
-          username: ${{ secrets.EC2_USERNAME }}
-          key: ${{ secrets.SSH_KEY }}
-          script: |
-            mkdir hello3
+    - name: Deploy to EC2
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.EC2_HOST }}
+        username: ${{ secrets.EC2_USERNAME }}
+        key: ${{ secrets.SSH_KEY }}
+        script: |
+          mkdir hello3
