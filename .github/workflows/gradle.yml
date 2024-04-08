@@ -20,4 +20,4 @@ jobs:
         username: ec2-user
         key: ${{ secrets.SSH_KEY }}
         script: |
-          mkdir hello
+          mkdir hello1
