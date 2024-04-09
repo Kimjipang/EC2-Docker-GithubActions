@@ -21,10 +21,15 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           script: |
             cd /home/ec2-user/keemjipang/Storagepang
+            pwd
+            ls -al
             git config --global credential.helper store
             echo url=https://Kimjipang:${{ secrets.GH_PAT }}@github.com > ~/.git-credentials
             git pull origin
             ./gradlew build
             mkdir test
+            pwd
+            ls -al
+
 
             
