@@ -20,17 +20,11 @@ jobs:
           username: ${{ secrets.EC2_USERNAME }}
           key: ${{ secrets.SSH_KEY }}
           script: |
-            export MY_NAME=${{ secrets.GH_USERNAME }}
-            export MY_TOKEN=${{ secrets.GH_PAT }}
-            git config --global user.name "$MY_NAME"
-            echo "url=https://$MY_NAME:$MY_TOKEN@github.com" > ~/.git-credentials
+            echo "url=https://${{ secrets.GH_USERNAME }}:${{ secrets.GH_PAT }}@github.com" > ~/.git-credentials
+            git config --global credential.helper store
             cd keemjipang/StoragePang
             pwd
             ls -al
-            git config --global credential.helper store
             git pull origin
-            mkdir test
-            pwd
-            ls -al
 
             
