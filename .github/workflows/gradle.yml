@@ -24,9 +24,9 @@ jobs:
             pwd
             ls -al
             git config --global credential.helper store
-            echo url=https://Kimjipang:${{ secrets.GH_PAT }}@github.com > ~/.git-credentials
+            echo "url=https://${{ secrets.GH_USERNAME }}:${{ secrets.GH_PAT }}@github.com" > ~/.git-credentials
             git pull origin
-            rmdir test
+            mkdir test
             pwd
             ls -al
 
