@@ -20,7 +20,7 @@ jobs:
           username: ${{ secrets.EC2_USERNAME }}
           key: ${{ secrets.SSH_KEY }}
           script: |
-            cd keemjipang/Storagepang
+            cd keemjipang/StoragePang
             pwd
             ls -al
             git config --global credential.helper store
