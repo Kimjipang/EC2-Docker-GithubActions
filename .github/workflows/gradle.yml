@@ -19,12 +19,16 @@ jobs:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USERNAME }}
           key: ${{ secrets.SSH_KEY }}
+          env:
+            MY_NAME: ${{ secrets.GH_USERNAME }}
+            MY_TOKEN: ${{ secrets.GH_PAT }}
           script: |
+            git config --global user.name "$MY_NAME"
+            echo "url=https://$MY_NAME:$MY_TOKEN@github.com" > ~/.git-credentials
             cd keemjipang/StoragePang
             pwd
             ls -al
             git config --global credential.helper store
-            echo "url=https://${{ secrets.GH_USERNAME }}:${{ secrets.GH_PAT }}@github.com" > ~/.git-credentials
             git pull origin
             mkdir test
             pwd
