@@ -19,10 +19,9 @@ jobs:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USERNAME }}
           key: ${{ secrets.SSH_KEY }}
-          env:
-            MY_NAME: ${{ secrets.GH_USERNAME }}
-            MY_TOKEN: ${{ secrets.GH_PAT }}
           script: |
+            export MY_NAME=${{ secrets.GH_USERNAME }}
+            export MY_TOKEN=${{ secrets.GH_PAT }}
             git config --global user.name "$MY_NAME"
             echo "url=https://$MY_NAME:$MY_TOKEN@github.com" > ~/.git-credentials
             cd keemjipang/StoragePang
@@ -33,6 +32,5 @@ jobs:
             mkdir test
             pwd
             ls -al
-
 
             
