@@ -27,4 +27,11 @@ jobs:
             cd keemjipang/StoragePang
             git pull origin
             ./gradlew build
-            mkdir sibalsaki
+            cd ..
+            TAG=$(date +%Y%m%d%H%M%S)
+            docker build --build-arg JAR_FILE=demo-0.0.1-SNAPSHOT.jar --build-arg KEYSTORE_FILE=keystore.p12 -t demo-image:$TAG .
+            echo "Listing Docker Images..."
+            docker images
+            # docker stop demo-container || true
+            # docker rm demo-container || true
+            # docker run --name demo-container -p 443:8443 demo-image:$TAG
