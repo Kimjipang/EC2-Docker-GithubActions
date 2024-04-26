@@ -33,6 +33,3 @@ jobs:
             echo "Docker image build status: $?"
             echo "Listing Docker Images..."
             docker images
-            # docker stop demo-container || true
-            # docker rm demo-container || true
-            # docker run --name demo-container -p 443:8443 demo-image:$TAG
