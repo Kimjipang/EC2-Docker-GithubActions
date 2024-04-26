@@ -24,4 +24,5 @@ jobs:
             git config --global credential.helper store
             cd keemjipang/StoragePang
             git pull origin
+            ./gradlew build
             mkdir sibalsaki
