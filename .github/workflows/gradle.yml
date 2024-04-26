@@ -27,9 +27,17 @@ jobs:
             cd keemjipang/StoragePang
             git pull origin
             ./gradlew build
-            cd ..
-            TAG=$(date +%Y%m%d%H%M%S)
-            docker build --build-arg JAR_FILE=demo-0.0.1-SNAPSHOT.jar --build-arg KEYSTORE_FILE=keystore.p12 -t demo-image:$TAG .
-            echo "Docker image build status: $?"
-            echo "Listing Docker Images..."
-            docker images
+            echo "Checking for JAR file..."
+            ls build/libs/*.jar
+            if [ $? -eq 0 ]; then
+              echo "JAR file found:"
+              ls build/libs/*.jar
+            else
+              echo "No JAR file found, build may have failed."
+            fi
+            # cd ..
+            # TAG=$(date +%Y%m%d%H%M%S)
+            # docker build --build-arg JAR_FILE=demo-0.0.1-SNAPSHOT.jar --build-arg KEYSTORE_FILE=keystore.p12 -t demo-image:$TAG .
+            # echo "Docker image build status: $?"
+            # echo "Listing Docker Images..."
+            # docker images
