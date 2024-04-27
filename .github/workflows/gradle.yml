@@ -31,7 +31,7 @@ jobs:
             ls -l build/libs/
             cd ..
             TAG=$(date +%Y%m%d%H%M%S)
-            docker build --build-arg JAR_FILE=Storagepang/build/libs/demo-0.0.1-SNAPSHOT.jar --build-arg KEYSTORE_FILE=keystore.p12 -t demo-image:$TAG .
+            docker build --build-arg JAR_FILE=StoragePang/build/libs/demo-0.0.1-SNAPSHOT.jar --build-arg KEYSTORE_FILE=keystore.p12 -t demo-image:$TAG .
             echo "Docker image build status: $?"
             echo "Listing Docker Images..."
             docker images
