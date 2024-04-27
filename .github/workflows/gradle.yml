@@ -27,11 +27,9 @@ jobs:
             cd keemjipang/StoragePang
             git pull origin
             ./gradlew build
-            echo "Current directory: $(pwd)"
-            ls -l build/libs/
             cd ..
             TAG=$(date +%Y%m%d%H%M%S)
             docker build --build-arg JAR_FILE=StoragePang/build/libs/demo-0.0.1-SNAPSHOT.jar --build-arg KEYSTORE_FILE=keystore.p12 -t demo-image:$TAG .
-            echo "Docker image build status: $?"
-            echo "Listing Docker Images..."
-            docker images
+            docker stop demo-container || true
+            docker rm demo-container || true
+            docker run --name demo-container -p 443:8443 demo-image:$TAG
