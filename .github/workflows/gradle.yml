@@ -32,4 +32,4 @@ jobs:
             docker build --build-arg JAR_FILE=StoragePang/build/libs/demo-0.0.1-SNAPSHOT.jar --build-arg KEYSTORE_FILE=keystore.p12 -t demo-image:$TAG .
             docker stop demo-container || true
             docker rm demo-container || true
-            docker run --name demo-container -p 443:8443 demo-image:$TAG
+            docker run --name demo-container -d -p 443:8443 demo-image:$TAG
