@@ -25,7 +25,7 @@ public class ProjectController {
     public List<ProjectDTO> getAllProjects() {
         List<Project> projects = projectService.findAll();
 
-        List<ProjectDTO> projectDTOS = projects.stream().map(project -> new ProjectDTO(project.getId(), project.getTitle())).collect(Collectors.toList());
+        List<ProjectDTO> projectDTOS = projects.stream().map(project -> new ProjectDTO(project.getId(), project.getTitle(), project.getContent())).collect(Collectors.toList());
         return projectDTOS;
     }
 
@@ -34,7 +34,7 @@ public class ProjectController {
         Project project = projectService.findById(project_id).orElse(null);
 
         if (project != null) {
-            ProjectDTO projectDTO = new ProjectDTO(project.getId(), project.getTitle());
+            ProjectDTO projectDTO = new ProjectDTO(project.getId(), project.getTitle(), project.getContent());
             return projectDTO;
         }
         return null;

@@ -8,9 +8,11 @@ import lombok.Setter;
 public class ProjectDTO {
     private long id;
     private String title;
+    private String content;
 
-    public ProjectDTO(long id, String title) {
+    public ProjectDTO(long id, String title, String content) {
         this.id = id;
         this.title = title;
+        this.content = content;
     }
 }
