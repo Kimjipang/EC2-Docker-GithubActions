@@ -37,7 +37,7 @@ jobs:
             ./gradlew build
 
             # Docker 이미지 빌드 & 컨테이너 생성 및 실행
-            cd ..
+            cd ../../../..
             TAG=$(date +%Y%m%d%H%M%S)
             docker build --build-arg JAR_FILE=StoragePang/build/libs/demo-0.0.1-SNAPSHOT.jar --build-arg KEYSTORE_FILE=keystore.p12 -t demo-image:$TAG .
             docker stop demo-container || true
